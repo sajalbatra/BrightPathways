@@ -1,33 +1,47 @@
-
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import Logo from '../public/logo.png'
+import { UserButton, SignInButton } from "@clerk/nextjs";
+import { Button, Link } from "@nextui-org/react";
+import { auth } from "@clerk/nextjs";
+
 export const Navbar = () => {
+  const { userId } = auth();
   return (
     <>
-      <nav className=" w-full flex justify-between py-5 items-center px-8">
+      <nav className="flex items-center justify-between w-full px-8 py-5 ">
         <div>
-         {/*  <Image
+          {/*  <Image
           src={Logo}
           height={80}
           width={80}
           alt="logo"
           /> */}
-          <h1 className="font-bold  text-2xl border rounded-full p-2 bg-black text-white text-center">BP</h1>
+          <h1 className="p-2 text-2xl font-bold text-center text-white bg-black border rounded-full">
+            BP
+          </h1>
         </div>
-        <div className="  flex gap-5 items-center">
-          <div className=" flex gap-4">
-            <Link href={"/"} className=" text-lg">Find Homes</Link>
-            <Link href={"/"} className=" text-lg">Animal Care</Link>
-            <Link href={"/"}className=" text-lg">Adoption Center</Link>
-            <Link href={"/"}className=" text-lg">Special Schools</Link>
+        <div className="flex items-center gap-5">
+          <div className="items-center hidden gap-5 md:flex">
+            <Link href="/" className="text-lg" color="foreground">
+              Find Homes
+            </Link>
+            <Link href="/" className="text-lg" color="foreground">
+              Animal Care
+            </Link>
+            <Link href="/" className="text-lg" color="foreground">
+              Adoption Center
+            </Link>
+            <Link href="/" className="text-lg" color="foreground">
+              Special Schools
+            </Link>
           </div>
-
-          <div className="flex gap-2  items-center">
-            <button className="  px-5 rounded-full py-1 bg-black text-white">Sign In</button>
-            <button className="px-5 rounded-full py-1 bg-black text-white">Sign Up</button>
-          </div>
+          <div className="md:hidden"></div>
+          {userId ? (
+            <UserButton redirectUrl="/" />
+          ) : (
+            <Button color="primary" className="font-bold text-md">
+              <SignInButton redirectUrl="/" />
+            </Button>
+          )}
         </div>
       </nav>
     </>
