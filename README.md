@@ -6,7 +6,7 @@ Welcome to BrightPathways, a project aimed at helping individuals, particularly 
 
 ## Project Goals
 
-Our project aims to address sevearal key goals:
+Our project aims to address seveagit branch -M mainral key goals:
 
 1. **Accessibility**: We're dedicated to ensuring that individuals with diverse needs, including the elderly and those with disabilities, can effortlessly access the information and services they require.
 
